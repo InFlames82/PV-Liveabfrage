@@ -17,7 +17,7 @@ seitentxt = str(soup)
 
 #print(seitentxt)
 data = json.loads(seitentxt)
-#print(data)
+
 leistung = data['Items'][0]['Power'].split(' ')
 energie = data['Items'][1]['DailyYield'].split(' ')
 gesEnergie = data['Items'][2]['TotalYield'].split(' ')
@@ -25,14 +25,13 @@ euroKwhBrutto = 0.3914
 euroKwhNetto  = 0.3914/1.19
 faktorCo2=0.7
 
-
 energie = {
 	'heute':istZahl(energie[0].replace(',','.')),
 	'einheit':energie[1],
 	'gesamt':istZahl(gesEnergie[0].replace(',','.')),
 	'gesEinheit':gesEnergie[1]
 }
-
+	
 leistung = {
 	'aktuell':istZahl(leistung[0].replace(',','.')),
 	'einheit':leistung[1],
@@ -52,8 +51,8 @@ verguetung = {
 }
 
 co2Vermeidung = {
-  'heute':round(energie['heute']*faktorCo2),
-  'gesamt':round(energie['gesamt']*faktorCo2)
+  'heute':round(energie['heute']*faktorCo2,2),
+  'gesamt':round(energie['gesamt']*faktorCo2,2)
 }
 
 x = {
@@ -64,8 +63,8 @@ x = {
 	"Verguetung_Heute_Netto"  : verguetung['heuteNetto'],
 	"Verguetung_Gesamt_Brutto": verguetung['gesamtBrutto'],
 	"Verguetung_Gesamt_Netto" : verguetung['gesamtNetto'],
-  "Co2_Vermeidung_Heute": co2Vermeidung['heute'],
-  "Co2_Vermeidung_Gesamt": co2Vermeidung['gesamt']
+  "Co2_H": co2Vermeidung['heute'],
+  "Co2_G": co2Vermeidung['gesamt']
 }
 
 y = json.dumps(x)
