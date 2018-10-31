@@ -32,7 +32,7 @@ energie = {
 	'gesamt':istZahl(gesEnergie[0].replace(',','.')),
 	'gesEinheit':gesEnergie[1]
 }
-	
+
 leistung = {
 	'aktuell':istZahl(leistung[0].replace(',','.')),
 	'einheit':leistung[1],
@@ -52,8 +52,8 @@ verguetung = {
 }
 
 co2Vermeidung = {
-  'heute':round(energie['heute']*faktorCo2,2),
-  'gesamt':round(energie['gesamt']*faktorCo2,2)
+  'heute':round(energie['heute']*faktorCo2),
+  'gesamt':round(energie['gesamt']*faktorCo2)
 }
 
 x = {
